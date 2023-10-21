@@ -20,5 +20,4 @@ for (let semana = 1; semana <= 99; semana++) {
   }
 }
 
-// Imprimimos el horario
 console.log(horario);
