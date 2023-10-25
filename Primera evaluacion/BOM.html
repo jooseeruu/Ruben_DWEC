@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+<body>
+    <button onclick="historial()">historial</button>
+    <button onclick="abrirWeb()">Abrir Web</button>
+    <button onclick="cerrarWeb()">Cerrar Web</button>
+    <script>
+        alert("GG")
+        var nuevaVentana; // Aquí guardaremos la referencia a la nueva ventana
+
+        function historial(){
+            history.go(-1)
+        }
+        function abrirWeb(){
+            // Guardamos la referencia a la nueva ventana
+            nuevaVentana = window.open("https://www.cifpfbmoll.eu/", "_blank", "width=250,height=300");
+        }
+
+        function cerrarWeb(){
+            // Comprobamos si la nueva ventana está abierta antes de intentar cerrarla
+            if (nuevaVentana && !nuevaVentana.closed) {
+                nuevaVentana.close();
+            }
+        }
+    </script>
+    
+</body>
+</html>
+
