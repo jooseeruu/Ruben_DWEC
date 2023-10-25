@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Tabla de Modelos de Coches</title>
+</head>
+<body>
+    <script>
+        // Crear el objeto Marca
+        function Marca(nombre) {
+            this.nombre = nombre;
+        }
+
+        // Crear el objeto Modelo
+        function Modelo(nombre, marca) {
+            this.nombre = nombre;
+            this.marca = marca;
+        }
+
+        // Declarar las marcas con variables
+        var toyota = new Marca("Toyota");
+        var ford = new Marca("Ford");
+        var tesla = new Marca("Tesla");
+
+        // Declarar los modelos con variables
+        var corolla = new Modelo("Corolla", toyota);
+        var camry = new Modelo("Camry", toyota);
+        var mustang = new Modelo("Mustang", ford);
+        var modelS = new Modelo("Model S", tesla);
+
+        // Añadir modelos a array modelos
+        var modelos = []
+        modelos.push(corolla)
+        modelos.push(camry)
+        modelos.push(mustang)
+        modelos.push(modelS)
+
+        // Crear la tabla HTML
+        var tabla = document.createElement("Table")
+        
+        // Crear la cabecera
+        var trCabecera = document.createElement("tr")
+        
+        var thMarca = document.createElement("th")
+        thMarca.innerHTML = "Marca"
+        
+        var thModelo = document.createElement("th")
+        thModelo.innerHTML = "Modelo"
+        
+        trCabecera.appendChild(thMarca)
+        trCabecera.appendChild(thModelo)
+        
+        tabla.appendChild(trCabecera)
+
+        // Añadir una fila para cada modelo
+        for (var i = 0; i < modelos.length; i++) {
+            var trModelo = document.createElement("tr");
+            
+            var tdMarca = document.createElement("td");
+            tdMarca.innerHTML = modelos[i].marca.nombre;
+            
+            var tdModelo = document.createElement("td");
+            tdModelo.innerHTML = modelos[i].nombre;
+            
+            trModelo.appendChild(tdMarca);
+            trModelo.appendChild(tdModelo);
+            
+            tabla.appendChild(trModelo);
+        }
+
+        // Imprimir la tabla HTML
+        document.body.appendChild(tabla);
+    </script>
+</body>
+</html>
