@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM CSS</title>
+  </head>
+  <body>
+    <p class="saludo" id="primero">Hola</p>
+    <p class="saludo">Que</p>
+    <p>Tal</p>
+    <script>
+      var p = document.querySelector("#primero");
+
+      // Cambiar el texto
+      p.textContent = "Adiós";
+
+      // Cambiar el color a azul
+      p.style.color = "blue";
+
+      // Seleccionar todos los elementos con la clase "saludo"
+      var saludos = document.querySelectorAll(".saludo");
+
+      // Cambiar el color de texto a rojo y el color de fondo a amarillo
+      for (var i = 0; i < saludos.length; i++) {
+        saludos[i].style.color = "red";
+        saludos[i].style.backgroundColor = "yellow";
+      }
+
+      // Seleccionar el último párrafo
+      document.querySelector("p:nth-child(3)").innerHTML += "?";
+
+      // Crear un elemento de imagen
+      var img = document.createElement("img");
+
+      // Establecer el atributo src a la URL
+      img.src =
+        "https://cdn-images.motor.es/image/m/416w.webp/fotos-ficha/lamborghini/lamborghini-urus-37455_1.jpg";
+
+      // Establecer el ancho a 100px
+      img.width = 100;
+
+      // Insertar la imagen antes del párrafo que contiene "Adiós"
+      document.body.insertBefore(img, p);
+    </script>
+  </body>
+</html>
