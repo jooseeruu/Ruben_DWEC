@@ -6,9 +6,11 @@
     <title>BOM</title>
 </head>
 <body>
-    <button onclick="historial()">historial</button>
+    <button onclick="historial()">Historial</button>
     <button onclick="abrirWeb()">Abrir Web</button>
     <button onclick="cerrarWeb()">Cerrar Web</button>
+    <button onclick="refrescar()">Refrescar</button>
+    <button onclick="saludarUsuario()">Saludar Usuario</button>
     <script>
         alert("GG")
         var nuevaVentana; // Aquí guardaremos la referencia a la nueva ventana
@@ -27,8 +29,19 @@
                 nuevaVentana.close();
             }
         }
+
+        function refrescar(){
+            // Refresca la página
+            location.reload();
+        }
+
+        function saludarUsuario() {
+            // Pide el nombre del usuario y lo saluda usando BOM
+            var nombreUsuario = window.prompt("Ingresa tu nombre:");
+            window.alert("Hola " + nombreUsuario + ", como estas?");
+        }
+        
     </script>
     
 </body>
 </html>
-
