@@ -37,7 +37,7 @@ class Familia {
 
 // Creamos una nueva instancia de la clase Familia para la familia Sastre
 var sastre = new Familia(
-  ["padre", "madre", "hijo", "hija"],
+  ["Sastre", "madre", "hijo", "hija"],
   ["poner lavadora", "limpiar cocina", "limpiar baño"]
 );
 // Llamamos al método planificarTareas para la familia Sastre
@@ -45,7 +45,7 @@ sastre.planificarTareas(52);
 
 // Creamos una nueva instancia de la clase Familia para la familia Torrens
 var torrens = new Familia(
-  ["padre", "madre", "hijo", "hija"],
+  ["Torrens", "madre", "hijo", "hija"],
   ["planchar", "limpiar baño"]
 );
 // Llamamos al método planificarTareas para la familia Torrens
@@ -53,7 +53,7 @@ torrens.planificarTareas(4);
 
 // Creamos una nueva instancia de la clase Familia para la familia Moll
 var moll = new Familia(
-  ["padre", "madre", "hijo", "hija grande", "hija pequeña"],
+  ["Moll", "madre", "hijo", "hija grande", "hija pequeña"],
   ["poner lavadora","limpiar cocina","limpiar comedor","planchar","limpiar baño"]
 );
 // Llamamos al método planificarTareas para la familia Moll
