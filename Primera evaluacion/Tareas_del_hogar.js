@@ -52,13 +52,7 @@ torrens.planificarTareas(4);
 // Creamos una nueva instancia de la clase Familia para la familia Moll
 var moll = new Familia(
   ["padre", "madre", "hijo", "hija grande", "hija pequeña"],
-  [
-    "poner lavadora",
-    "limpiar cocina",
-    "limpiar comedor",
-    "planchar",
-    "limpiar baño",
-  ]
+  ["poner lavadora","limpiar cocina","limpiar comedor","planchar","limpiar baño",]
 );
 // Llamamos al método planificarTareas para la familia Moll
 moll.planificarTareas(12);
