@@ -15,6 +15,8 @@ class Familia {
    * @param {Number} semanas - El número de semanas para las que se planificarán las tareas.
    */
   planificarTareas(semanas) {
+    // Imprimimos el nombre de la familia
+    console.log(`FAMILIA ${this.miembros[0].toUpperCase()}`);
     // Recorremos cada semana
     for (var i = 0; i < semanas; i++) {
       // Imprimimos el número de la semana
@@ -52,7 +54,8 @@ torrens.planificarTareas(4);
 // Creamos una nueva instancia de la clase Familia para la familia Moll
 var moll = new Familia(
   ["padre", "madre", "hijo", "hija grande", "hija pequeña"],
-  ["poner lavadora","limpiar cocina","limpiar comedor","planchar","limpiar baño",]
+  ["poner lavadora","limpiar cocina","limpiar comedor","planchar","limpiar baño"]
 );
 // Llamamos al método planificarTareas para la familia Moll
 moll.planificarTareas(12);
+
