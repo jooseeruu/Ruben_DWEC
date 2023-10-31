@@ -1,6 +1,6 @@
 # Juego de Poker
 
-Este es un simple juego de poker implementado en JavaScript y HTML. El juego permite a los usuarios jugar una mano de poker con un mazo de 52 cartas.
+Este es un juego de poker muy simple implementado en JavaScript y HTML. El juego permite a los usuarios jugar una mano de poker con un mazo de 52 cartas.
 
 ## Características
 
