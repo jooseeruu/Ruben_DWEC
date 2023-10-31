@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Juego de Poker</title>
+</head>
+<body>
+    <!-- Botones para jugar y cerrar el juego -->
+    <button id="jugar">Jugar</button>
+    <button id="cerrarTodo">Cerrar Todo</button>
+
+    <script>
+        // Creación del mazo de cartas
+        const cartas = crearMazo();
+
+        // Variable para la ventana del juego
+        let ventana;
+
+        // Evento para iniciar el juego
+        document.getElementById('jugar').addEventListener('click', iniciarJuego);
+
+        // Evento para cerrar el juego
+        document.getElementById('cerrarTodo').addEventListener('click', cerrarJuego);
+
+        // Función para la creación del mazo de cartas
+        function crearMazo() {
+            const mazo = [];
+            for (let i = 1; i <= 52; i++) {
+                mazo.push(i);
+            }
+            return mazo;
+        }
+
+        // Función para iniciar el juego
+        function iniciarJuego() {
+            if (!ventana || ventana.closed) {
+                ventana = window.open("", "", "width=800,height=300");
+            }
+            jugar();
+        }
+
+        // Función para cerrar el juego
+        function cerrarJuego() {
+            if (window) {
+                ventana.close()
+                window.close();
+            }
+        }
+
+        // Función para cerrar solo la ventana emergente
+        function cerrarVentana() {
+            if (ventana) {
+                ventana.close();
+            }
+        }
+
+        // Función principal del juego
+        function jugar() {
+            const mano = obtenerMano();
+            mostrarMano(mano);
+            mostrarResultado(mano);
+        }
+
+        // Función para obtener una mano de 5 cartas aleatorias
+        function obtenerMano() {
+            const mano = [];
+            for (let i = 0; i < 5; i++) {
+                const indice = Math.floor(Math.random() * cartas.length);
+                mano.push(cartas[indice]);
+                cartas.splice(indice, 1);
+            }
+            return mano;
+        }
+
+        // Función para mostrar la mano en la ventana del juego
+        function mostrarMano(mano) {
+            const body = ventana.document.body;
+            body.innerHTML = '';
+
+            for (let i = 0; i < mano.length; i++) {
+                const img = ventana.document.createElement('img');
+                img.src = 'img/' + mano[i] + '.png';
+                img.style.width = '20%';
+                body.appendChild(img);
+            }
+
+            const button = ventana.document.createElement('button');
+            button.textContent = 'Refrescar';
+            button.addEventListener('click', jugar);
+            body.appendChild(button);
+
+            const button2 = ventana.document.createElement('button');
+            button2.textContent = 'CerrarVentana';
+            button2.addEventListener('click', cerrarVentana);
+            body.appendChild(button2);
+        }
+
+        // Función para mostrar el resultado del juego
+        function mostrarResultado(mano) {
+            const p = ventana.document.createElement('p');
+            ventana.document.body.appendChild(p);
+
+            if (esPareja(mano)) {
+                p.textContent = "¡Has ganado, tienes parejas!"; 
+            } else {
+                p.textContent = "Has perdido. ¡Inténtalo de nuevo!"; 
+            }
+        }
+
+        // Función para verificar si la mano tiene una pareja
+        function esPareja(mano) {
+            const counts = {};
+            for (let i = 0; i < mano.length; i++) {
+                const number = Math.ceil(mano[i] / 4);
+                counts[number] = (counts[number] || 0) + 1;
+                if (counts[number] >= 2) {
+                    return true;
+                }
+            }
+            return false;
+        }               
+    </script>
+</body>
+</html>
