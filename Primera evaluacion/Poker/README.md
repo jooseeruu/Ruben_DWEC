@@ -18,7 +18,7 @@ Este es un juego de poker muy simple implementado en JavaScript y HTML. El juego
 
 Para jugar el juego, simplemente abre el archivo HTML en tu navegador y haz clic en el botón "Jugar". Para cerrar el juego, haz clic en el botón "Cerrar Todo". Para cerrar solo la ventana emergente, haz clic en el botón "CerrarVentana".
 
-## Renombrar archivos PNG (Buscar dentro de img)
+## Renombrar archivos PNG (Buscar dentro de /img)
 
 Este proyecto incluye un script para renombrar todos los archivos PNG en un directorio específico. Aquí está cómo se utiliza:
 
