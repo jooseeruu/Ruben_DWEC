@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Formulario</title>
+</head>
+<body>
+    <label>Nombre</label>
+    <input type="text" name="nombre"/>
+
+    <label>Sexo</label>
+    <input type="radio" name="sexo" value="M"/>M
+    <input type="radio" name="sexo" value="F"/>F
+
+    <label>Numero de Registro</label>
+    <input type="text" name="numreg"/>
+
+    <script type="module">
+        import {getAnimals} from "../service/AnimalService.js";
+
+        function init(){
+            const url = new URLSearchParams(window.location.search);
+            let idAnimal =url.get("identificador")
+
+            console.log(idAnimal)
+
+        }
+
+        window.addEventListener("load",init);
+    </script>
+</body>
+</html>
