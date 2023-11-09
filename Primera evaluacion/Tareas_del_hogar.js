@@ -14,7 +14,7 @@ class Familia {
    * Este método asigna las tareas a los miembros de la familia de manera equitativa.
    * @param {Number} semanas - El número de semanas para las que se planificarán las tareas.
    */
-  planificarTareas(semanas) {
+  planificar(semanas) {
     // Imprimimos el nombre de la familia
     console.log(`FAMILIA ${this.miembros[0].toUpperCase()}`);
     // Recorremos cada semana
@@ -41,15 +41,7 @@ var sastre = new Familia(
   ["poner lavadora", "limpiar cocina", "limpiar baño"]
 );
 // Llamamos al método planificarTareas para la familia Sastre
-sastre.planificarTareas(52);
-
-// Creamos una nueva instancia de la clase Familia para la familia Torrens
-var torrens = new Familia(
-  ["torrens", "madre", "hijo", "hija"],
-  ["planchar", "limpiar baño"]
-);
-// Llamamos al método planificarTareas para la familia Torrens
-torrens.planificarTareas(4);
+sastre.planificar(52);
 
 // Creamos una nueva instancia de la clase Familia para la familia Moll
 var moll = new Familia(
@@ -57,5 +49,13 @@ var moll = new Familia(
   ["poner lavadora","limpiar cocina","limpiar comedor","planchar","limpiar baño"]
 );
 // Llamamos al método planificarTareas para la familia Moll
-moll.planificarTareas(12);
+moll.planificar(12);
+
+// Creamos una nueva instancia de la clase Familia para la familia Torrens
+var torrens = new Familia(
+  ["torrens", "madre", "hijo", "hija"],
+  ["planchar", "limpiar baño"]
+);
+// Llamamos al método planificarTareas para la familia Torrens
+torrens.planificar(4);
 

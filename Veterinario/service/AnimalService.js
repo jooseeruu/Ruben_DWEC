@@ -1,6 +1,6 @@
 import{Animal} from "../model/Animal.js";
 export function getAnimals(){
-    const animal1 = new Animal(1,"Bob","M",null,"DOG");
+    const animal1 = new Animal(1,"Bobolon","M",null,"DOG");
     const animal2 = new Animal(2,"Pluto","M",345,"DOG");
     const animal3 = new Animal(3,"Firulais","M",567,"CAT");
     const animal4 = new Animal(4,"Pumba","M",967,"DOG");

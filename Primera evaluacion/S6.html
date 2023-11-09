@@ -7,27 +7,20 @@
 </head>
 <body>
     <script>
-        function qa(){
-            //clousures
-        }
-
         function clousures(a ,b){
             function esnclousure(x ,y){
-                return x+y
+                return x+y;
             }
-        }   function esnclousure1(x,y){
-                return x+y
+            return esnclousure(a, b);
+        }   
+
+        function esnclousure1(x,y){
+            return x+y;
         }
 
-
-
-
-
-
-
-    setTimeout(function)
-        clousures(6,7)
+        setTimeout(function(){
+            console.log(clousures(6,7));
+        }, 1000);
     </script>
-    
 </body>
 </html>
