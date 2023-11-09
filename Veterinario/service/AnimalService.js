@@ -13,7 +13,7 @@ export function getAnimals(){
 export function getAnimal(idAnimal){
     const animals = getAnimals();
    
-    return animals.find(function(ani){ani.id === idAnimal;});
+    return animals.find(function(ani){return ani.id === idAnimal;});
 }
 
 function getDogs(){

@@ -17,14 +17,20 @@
     <input type="text" name="numreg"/>
 
     <script type="module">
-        import {getAnimals} from "../service/AnimalService.js";
+        import {getAnimal} from "../service/AnimalService.js";
 
         function init(){
             const url = new URLSearchParams(window.location.search);
             let idAnimal =url.get("identificador")
 
             console.log(idAnimal)
-
+            if(idAnimal){
+                const Animal = getAnimal(parseInt(idAnimal));
+                console.log(Animal)
+                document.querySelector('[name="nombre"]').value = Animal.name
+                document.querySelector('[name="numreg"]').value = Animal.registerynumber
+                
+            }
         }
 
         window.addEventListener("load",init);
