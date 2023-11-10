@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+<body>
+    <div id="resultadoget">Aquí pondremos el resultado get</div>
+    <div id="resultadopost">Aquí pondremos el resultado post</div>
+    <div id="resultadomultiple">Aquí lo del for</div>
+    <script>
+        /*
+        AJAX significa JavaScript asíncrono y XML (Asynchronous JavaScript and XML).
+        Es un conjunto de técnicas de desarrollo web que permiten que las aplicaciones web funcionen de forma asíncrona
+        procesando cualquier solicitud al servidor en segundo plano
+
+        Ex.
+        animals.html --} serveidor msql
+        objeto animal {-- 'Json'
+
+        cons animal = getAnimals();
+        for(let 1 =0; i<animals.length; i++){
+
+        }
+
+
+        XMLHttpRequest {-- objeto que invento microsoft 
+            1- Refresca una parte del dom
+
+            http://95.39.145.183/asincrono.php?num=1
+            http://95.39.145.183/asincrono2.php
+
+
+        */
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState ==4){
+                console.log(this.responseText);
+                document.getElementById("resultadoget").innerHTML= this.responseText
+            }else{
+                console.log("El estado es", this.readyState);
+            };
+        }
+        xhttp.open("GET", "http://95.39.145.183/asincrono.php?num=1");
+        xhttp.send();
+
+
+        let xhttp2 = new XMLHttpRequest();
+        xhttp2.onreadystatechange = function(){
+            if(this.readyState == 4){
+                console.log(this.responseText);
+                document.getElementById("resultadopost").innerHTML= this.responseText;
+            }else{
+                console.log("El estado es", this.readyState);
+            }
+        };
+        xhttp2.open("POST", "http://95.39.145.183/asincrono2.php");
+        xhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp2.send("num=2");
+
+        for(let i = 0; i<10; i++){
+
+        }
+        
+
+    </script>
+</body>
+</html>
