@@ -59,10 +59,22 @@
         xhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp2.send("num=2");
 
-        for(let i = 0; i<10; i++){
 
+
+        for(let i = 0; i<10; i++){
+            let xhttp3 = new XMLHttpRequest();
+            xhttp2.onreadystatechange = function(){
+                if(this.readyState == 4){
+                    console.log(this.responseText);
+                    document.getElementById("resultadomultiple").innerHTML= this.responseText;
+                }else{
+                    console.log("El estado es", this.readyState);
+                }
+            };
+            xhttp2.open("POST", "http://95.39.145.183/asincrono.php");
+            xhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp2.send("num="+i);
         }
-        
 
     </script>
 </body>

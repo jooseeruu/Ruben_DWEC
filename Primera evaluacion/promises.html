@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+<body>
+    <script>
+        /*
+        Promise objeto para representar la terminación o el fracaso de una operación asíncrona.
+
+        //Estados de una promesa
+
+        pending: estado inicial, no cumplida o rechazada.
+        fulfilled: significa que la operación se completó satisfactoriamente.
+        rejected: significa que la operación falló.
+        
+        
+        //Ejemplo de promesa
+
+        let promesa = new Promise((resolve, reject) => {
+            let a = 1 + 1;
+            if (a == 2) {
+                resolve('Success');
+            } else {
+                reject('Failed');
+            }
+        });
+
+        //Ejecución de la promesa
+
+        promesa.then((message) => {
+            console.log('This is in the then ' + message);
+        }).catch((message) => {
+            console.log('This is in the catch ' + message);
+        });
+        */
+
+        //Ejemplo de promesa con tiempo de espera
+
+        const wait = new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                resolve('chill');
+            }, 5000);
+        }).then(function(result) {
+            console.log(result);
+        });
+        console.log(wait);
+    </script>
+    
+</body>
+</html>

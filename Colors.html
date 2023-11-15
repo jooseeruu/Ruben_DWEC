@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COLORS</title>
+  </head>
+  <body>
+    <div id="cuadrado"></div>
+    <button onclick="pintar()">Colorear de nuevo</button>
+    <script>
+      function pintar(){
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            console.log(this.responseText);
+            parametros = JSON.parse(this.responseText);
+            document.getElementById("cuadrado").style.width = parametros.width + "px";
+            document.getElementById("cuadrado").style.height = parametros.height + "px";
+            document.getElementById("cuadrado").style.background = parametros.color;
+            document.querySelector("body").style.background = parametros.background;
+            console.log(parametros);
+          } else {
+            console.log("El estado es", this.onreadyState);
+          }
+        };
+        xhttp.open(
+          "GET",
+          "http://95.39.145.183/ejercicios/color.php?min=150&max=400"
+        );
+        xhttp.send();
+      }
+
+    </script>
+  </body>
+</html>
