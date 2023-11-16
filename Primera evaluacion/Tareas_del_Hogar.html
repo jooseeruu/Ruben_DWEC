@@ -1,4 +1,14 @@
-// Definimos una clase llamada Familia
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Definimos una clase llamada Familia
 class Familia {
   /**
    * Crea una nueva instancia de la clase Familia.
@@ -23,8 +33,7 @@ class Familia {
       console.log(`Semana ${i + 1}:`);
       // Recorremos cada tarea
       for (var j = 0; j < this.tareas.length; j++) {
-        // Imprimimos la tarea y el miembro de la familia que debe realizarla
-        // Usamos (%) para asignar las tareas de manera equitativa
+        // Imprimimos la tarea y el miembro de la familia que la realizará
         console.log(
           `Tarea: ${this.tareas[j]}, Miembro: ${
             this.miembros[j % this.miembros.length]
@@ -59,3 +68,7 @@ var torrens = new Familia(
 // Llamamos al método planificarTareas para la familia Torrens
 torrens.planificar(4);
 
+
+  </script>
+</body>
+</html>

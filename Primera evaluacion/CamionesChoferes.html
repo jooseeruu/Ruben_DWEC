@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camiones y Choferes</title>
+</head>
+<body>
+  <script>
+    function Camiones_Choferes() {
+      // Definimos los conductores y los camiones
+      const CHOFERES = ["Juan", "Pep", "Toni"];
+      const CAMIONES = ["Man", "Scania", "Volvo", "Iveco"];
+    
+      // Creamos un objeto vacío para almacenar el horario
+      let horario = {};
+    
+      for (let semana = 1; semana <= 99; semana++) {
+        // Para cada semana, creamos un objeto vacío dentro del objeto 'horario'
+        horario[semana] = {};
+    
+        for (let i = 0; i < CHOFERES.length; i++) {
+          // Calculamos el índice del camión basado en la semana actual y el índice del conductor
+          let camionIndex = (semana + i) % CAMIONES.length;
+    
+          // Asignamos el camión al conductor en la semana correspondiente
+          horario[semana][CHOFERES[i]] = CAMIONES[camionIndex];
+        }
+      }
+    
+      return horario;
+    }
+    
+    console.log(Camiones_Choferes());
+    
+
+
+  </script>
+</body>
+</html>
