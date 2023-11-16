@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Usuarios</title>
+    </head>
+    <body>
+        <h1>Usuarios</h1>
+        <table id="tabla">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Sex</th>
+                </tr>
+            </thead>
+        </table>
+        <script>
+            function getUsers(){
+                return fetch("http://95.39.145.183/ejercicios/usuarios.php", {
+                    method: "GET",
+                })
+                .then(function (respuesta1) {
+                    return respuesta1.json();
+                });
+            }
+
+            function getStyle(){
+                return fetch("http://95.39.145.183/ejercicios/color.php?min=19&max=30",{
+                    method: "GET"
+                }).then(function(respuesta1){
+                    return  respuesta1.json();
+                });
+            }
+
+            function pintarTabla(color, users){
+                const tabla = document.getElementById("tabla");
+                const tbody = document.createElement("tbody");
+
+                for (let i = 0; i < users.length; i++) {
+                    let tr = document.createElement("tr");
+                    let td1 = document.createElement("td");
+                    td1.textContent = users[i].username;
+                    tr.appendChild(td1);
+                    td2 = document.createElement("td");
+                    td2.textContent = users[i].name;
+                    tr.appendChild(td2);
+                    td3 = document.createElement("td");
+                    td3.textContent = users[i].surname;
+                    tr.appendChild(td3);
+                    td4 = document.createElement("td");
+                    td4.textContent = users[i].sex;
+                    tr.appendChild(td4);
+                    tbody.appendChild(tr);
+                }
+
+                tabla.appendChild(tbody);
+
+                tabla.style.color= color.color;
+                tabla.style.fontSize = color.width;
+                tabla.style.backgroundColor = color.background;
+            }
+
+            const colorPromise = getStyle();
+            const userPromise = getUsers();
+
+            Promise.all([colorPromise,userPromise]).then(function(arrayResponse){
+                const color = arrayResponse[0];
+                const users = arrayResponse[1];
+                pintarTabla(color,users);
+            })
+        </script>
+    </body>
+</html>
