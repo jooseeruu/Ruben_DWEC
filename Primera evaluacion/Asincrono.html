@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>asincrono</title>
+  </head>
+  <body>
+    <!-- Crear una tabla con dos columnas: número y texto -->
+    <table id="tabla">
+      <tr>
+        <th>Número</th>
+        <th>Texto</th>
+      </tr>
+    </table>
+    <script>
+      /*
+        10 peticiones a asincrono pintando los resultados ordenados
+
+        URL: http://34.90.153.139/ejercicios/asincrono.php
+        METHOD: GET
+        PARAMS: num (numerico)
+        RETURN: text
+      
+      */
+
+      // Crear un array de 10 números aleatorios entre 1 y 100
+      let numeros = [];
+      for (let i = 0; i < 10; i++) {
+        numeros.push(Math.floor(Math.random() * 100) + 1);
+      }
+
+      // Crear un array de promesas que hacen las peticiones al servidor
+      let promesas = [];
+      for (let num of numeros) {
+        // Usar la función fetch para hacer la petición GET con el parámetro num
+        let promesa = fetch(
+          `http://34.90.153.139/ejercicios/asincrono.php?num=${num}`
+        )
+          .then((response) => response.text()) // Convertir la respuesta a texto
+          .then((text) => ({ num, text })); // Devolver un objeto con el número y el texto
+        promesas.push(promesa);
+      }
+
+      // Usar Promise.all para esperar a que todas las promesas se resuelvan
+      Promise.all(promesas).then((resultados) => {
+        // Ordenar los resultados por el número
+        resultados.sort((a, b) => a.num - b.num);
+        let tabla = document.getElementById("tabla");
+        for (let resultado of resultados) {
+          let tr = document.createElement("tr");
+          let tdNum = document.createElement("td");
+          tdNum.innerHTML = resultado.num;
+          tr.appendChild(tdNum);
+          let tdText = document.createElement("td");
+          tdText.innerHTML = resultado.text;
+          tr.appendChild(tdText);
+          tabla.appendChild(tr);
+        }
+      });
+    </script>
+  </body>
+</html>
