@@ -1,76 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Usuarios</title>
-    </head>
-    <body>
-        <h1>Usuarios</h1>
-        <table id="tabla">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Sex</th>
-                </tr>
-            </thead>
-        </table>
-        <script>
-            function getUsers(){
-                return fetch("http://95.39.145.183/ejercicios/usuarios.php", {
-                    method: "GET",
-                })
-                .then(function (respuesta1) {
-                    return respuesta1.json();
-                });
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /*
+            Crear una table en html de usuarios recuperando los datos de:
+            URL: http://95.39.145.183/ejercicios/usuarios.php
+                http://34.147.66.205/ejercicios/usuarios.php
+            method: GET
+            response: JSON
+
+            Tabla: Username, Name, Surname y Sex
+        */
+
+      function getUsers(color, backgound, width) {
+        const tabla = document.createElement("TABLE");
+        tabla.style.color = color;
+        tabla.style.backgroundColor = backgound;
+        tabla.style.fontSize = width + "px";
+
+        const trHeader = document.createElement("TR");
+        tabla.appendChild(trHeader);
+
+        const thUsername = document.createElement("TH");
+        thUsername.innerHTML = "Username";
+        trHeader.appendChild(thUsername);
+
+        const thName = document.createElement("TH");
+        thName.innerHTML = "Name";
+        trHeader.appendChild(thName);
+
+        const thSurname = document.createElement("TH");
+        thSurname.innerHTML = "Surname";
+        trHeader.appendChild(thSurname);
+
+        const thSex = document.createElement("TH");
+        thSex.innerHTML = "Sex";
+        trHeader.appendChild(thSex);
+
+        fetch("http://95.39.145.183/ejercicios/usuarios.php")
+          .then((r) => r.json())
+          .then((respuesta) => {
+            console.log(respuesta);
+
+            for (let i = 0; i < respuesta.length; i++) {
+              const trData = document.createElement("TR");
+              tabla.appendChild(trData);
+
+              const tdUsername = document.createElement("TD");
+              tdUsername.innerHTML = respuesta[i].username;
+              trData.appendChild(tdUsername);
+
+              const tdName = document.createElement("TD");
+              tdName.innerHTML = respuesta[i].name;
+              trData.appendChild(tdName);
+
+              const tdSurname = document.createElement("TD");
+              tdSurname.innerHTML = respuesta[i].surname;
+              trData.appendChild(tdSurname);
+
+              const tdSex = document.createElement("TD");
+              tdSex.innerHTML = respuesta[i].sex;
+              trData.appendChild(tdSex);
             }
+          });
 
-            function getStyle(){
-                return fetch("http://95.39.145.183/ejercicios/color.php?min=19&max=30",{
-                    method: "GET"
-                }).then(function(respuesta1){
-                    return  respuesta1.json();
-                });
-            }
+        document.body.appendChild(tabla);
+      }
+      /*
+      (function(){
+        getUsers();
+      })();
+*/
 
-            function pintarTabla(color, users){
-                const tabla = document.getElementById("tabla");
-                const tbody = document.createElement("tbody");
+      /*
+        El tamaño del texto de la tabla de usuarios estará definido por 
+        la variable "width". 
+        El color de la letra lo definirá la variable "color" 
+        El color de fondo de la tabla lo definirá la variable "background"
 
-                for (let i = 0; i < users.length; i++) {
-                    let tr = document.createElement("tr");
-                    let td1 = document.createElement("td");
-                    td1.textContent = users[i].username;
-                    tr.appendChild(td1);
-                    td2 = document.createElement("td");
-                    td2.textContent = users[i].name;
-                    tr.appendChild(td2);
-                    td3 = document.createElement("td");
-                    td3.textContent = users[i].surname;
-                    tr.appendChild(td3);
-                    td4 = document.createElement("td");
-                    td4.textContent = users[i].sex;
-                    tr.appendChild(td4);
-                    tbody.appendChild(tr);
-                }
+        http://95.39.145.183/ejercicios/color.php?min=10&max=20
+      */
 
-                tabla.appendChild(tbody);
+      function getColor() {
+        fetch("http://95.39.145.183/ejercicios/color.php?min=30&max=50")
+          .then((r) => r.json())
+          .then((respuesta) => {
+            console.log("Respuesta 2 arrow", respuesta);
+            getUsers(respuesta.color, respuesta.background, respuesta.width);
+          });
+      }
 
-                tabla.style.color= color.color;
-                tabla.style.fontSize = color.width;
-                tabla.style.backgroundColor = color.background;
-            }
+      /*
+      (function () {
+        getColor();
+      })();
+      */
 
-            const colorPromise = getStyle();
-            const userPromise = getUsers();
+      /*
+        Promise.All(array de promesas).then(array de respuestas)
 
-            Promise.all([colorPromise,userPromise]).then(function(arrayResponse){
-                const color = arrayResponse[0];
-                const users = arrayResponse[1];
-                pintarTabla(color,users);
-            })
-        </script>
-    </body>
+        Promise.all espera a que todas las peticiones acaben correctamente
+      */
+
+      function pintarTabla(color, users) {
+        const tabla = document.createElement("TABLE");
+        tabla.style.color = color.color;
+        tabla.style.backgroundColor = color.background;
+        tabla.style.fontSize = color.width + "px";
+
+        const trHeader = document.createElement("TR");
+        tabla.appendChild(trHeader);
+
+        const thUsername = document.createElement("TH");
+        thUsername.innerHTML = "Username";
+        trHeader.appendChild(thUsername);
+
+        const thName = document.createElement("TH");
+        thName.innerHTML = "Name";
+        trHeader.appendChild(thName);
+
+        const thSurname = document.createElement("TH");
+        thSurname.innerHTML = "Surname";
+        trHeader.appendChild(thSurname);
+
+        const thSex = document.createElement("TH");
+        thSex.innerHTML = "Sex";
+        trHeader.appendChild(thSex);
+
+        for (let i = 0; i < users.length; i++) {
+          const trData = document.createElement("TR");
+          tabla.appendChild(trData);
+
+          const tdUsername = document.createElement("TD");
+          tdUsername.innerHTML = users[i].username;
+          trData.appendChild(tdUsername);
+
+          const tdName = document.createElement("TD");
+          tdName.innerHTML = users[i].name;
+          trData.appendChild(tdName);
+
+          const tdSurname = document.createElement("TD");
+          tdSurname.innerHTML = users[i].surname;
+          trData.appendChild(tdSurname);
+
+          const tdSex = document.createElement("TD");
+          tdSex.innerHTML = users[i].sex;
+          trData.appendChild(tdSex);
+        }
+
+        document.body.appendChild(tabla);
+      }
+
+      const colorPromise = fetch(
+        "http://95.39.145.183/ejercicios/color.php?min=30&max=50"
+      ).then((r) => r.json());
+      const usersPriomise = fetch(
+        "http://95.39.145.183/ejercicios/usuarios.php"
+      ).then((r) => r.json());
+
+      Promise.all([colorPromise, usersPriomise]).then(function (
+        arrayResponses
+      ) {
+        const color = arrayResponses[0];
+        const users = arrayResponses[1];
+
+        pintarTabla(color, users);
+      });
+
+
+      /*
+        10 peticiones a asincrono pintando los resultados ordenados
+
+        URL: http://34.90.153.139/ejercicios/asincrono.php
+        METHOD: GET
+        PARAMS: num (numerico)
+        RETURN: text
+      
+      */
+
+      
+    </script>
+  </body>
 </html>
