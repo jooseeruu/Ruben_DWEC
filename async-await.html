@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>asincrono</title>
+  </head>
+  <body>
+    <!-- Crear una tabla con dos columnas: número y texto -->
+    <table id="tabla">
+      <thead>
+        <tr>
+          <th>Número</th>
+          <th>Texto</th>
+        </tr>
+      </thead>
+      <tbody id="tablaBody">
+      </tbody>
+    </table>
+    <script>
+      async function obtenerDatos(num) {
+        const respuesta = await fetch(`http://34.90.153.139/ejercicios/asincrono.php?num=${num}`);
+        const texto = await respuesta.text();
+        return { num, texto };
+      }
+
+      function construirFila(resultado) {
+        const fila = document.createElement("tr");
+
+        const tdNum = document.createElement("td");
+        tdNum.textContent = resultado.num;
+        fila.appendChild(tdNum);
+
+        const tdTexto = document.createElement("td");
+        tdTexto.textContent = resultado.texto;
+        fila.appendChild(tdTexto);
+
+        return fila;
+      }
+
+      async function obtenerDatosYConstruirTabla() {
+        let numeros = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100) + 1);
+
+        let promesas = numeros.map(obtenerDatos);
+        let resultados = await Promise.all(promesas);
+
+        resultados.sort((a, b) => a.num - b.num);
+
+        const tablaBody = document.getElementById("tablaBody");
+
+        resultados.forEach(resultado => {
+          const fila = construirFila(resultado);
+          tablaBody.appendChild(fila);
+        });
+
+        const colorData = await fetch("http://34.90.153.139/ejercicios/color.php?min=30&max=70").then(response => response.json());
+        
+        const tabla = document.getElementById("tabla");
+        tabla.style.color = colorData.color;
+        tabla.style.backgroundColor = colorData.background;
+        tabla.style.fontSize = colorData.width + "px";
+      }
+
+      obtenerDatosYConstruirTabla();
+    </script>
+  </body>
+</html>
+
+
