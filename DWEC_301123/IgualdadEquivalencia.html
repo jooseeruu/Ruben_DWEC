@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo Igualdad y Equivalencia</title>
+  </head>
+  <body>
+    <p id="resultado"></p>
+
+    <script>
+      const a = 10;
+      const b = "10";
+
+      // Igualdad estricta (valor y tipo)
+      const igualdad = a === b;
+
+      // Equivalencia (verifica el valor, convirtiendo tipos si es necesario)
+      const equivalencia = a == b;
+
+      document.getElementById(
+        "resultado"
+      ).textContent = `Igualdad: ${igualdad}, Equivalencia: ${equivalencia}`;
+    </script>
+  </body>
+</html>

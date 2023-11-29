@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comparadores en JavaScript</title>
+</head>
+<body>
+
+<p id="resultado"></p>
+
+<script>
+  const a = 10;
+  const b = '10';
+
+  const igualdadEstricta = a === b;
+  const desigualdadEstricta = a !== b;
+  const igualdadAbstracta = a == b;
+  const desigualdadAbstracta = a != b;
+  const mayorQue = a > 5;
+  const menorQue = a < 15;
+  const mayorIgualQue = a >= 10;
+  const menorIgualQue = a <= 10;
+
+  const mensaje = `
+    ===: ${igualdadEstricta},
+    !==: ${desigualdadEstricta},
+    ==: ${igualdadAbstracta},
+    !=: ${desigualdadAbstracta},
+    >: ${mayorQue},
+    <: ${menorQue},
+    >=: ${mayorIgualQue},
+    <=: ${menorIgualQue}
+  `;
+
+  document.getElementById('resultado').textContent = mensaje;
+</script>
+
+</body>
+</html>

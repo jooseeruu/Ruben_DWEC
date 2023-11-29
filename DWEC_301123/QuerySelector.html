@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo QuerySelector</title>
+  </head>
+  <body>
+    <button class="botonEjemplo">Haz clic</button>
+    <p id="parrafoEjemplo">Este es un párrafo de ejemplo.</p>
+
+    <script>
+      // Seleccionar un elemento por su clase
+      const boton = document.querySelector(".botonEjemplo");
+
+      // Seleccionar un elemento por su ID
+      const parrafo = document.querySelector("#parrafoEjemplo");
+
+      // Modificar el botón seleccionado
+      boton.addEventListener("click", function () {
+        parrafo.textContent = "¡El botón fue clicado!";
+      });
+    </script>
+  </body>
+</html>

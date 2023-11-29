@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Condicionales</title>
+  </head>
+  <body>
+    <script>
+      let opcion = 3;
+
+      // if-else
+      if (opcion === 1) {
+        console.log("Opción uno seleccionada");
+      } else if (opcion === 2) {
+        console.log("Opción dos seleccionada");
+      } else {
+        console.log("Opción no reconocida");
+      }
+
+      // Operador ternario
+      let mensaje = opcion === 1 ? "Opción uno" : "Otra opción";
+      console.log(mensaje);
+
+      // switch
+      switch (opcion) {
+        case 1:
+          console.log("Seleccionaste la opción uno");
+          break;
+        case 2:
+          console.log("Seleccionaste la opción dos");
+          break;
+        default:
+          console.log("Opción no reconocida en el switch");
+          break;
+      }
+
+      // for loop
+      console.log("Bucle for:");
+      for (let i = 0; i < 5; i++) {
+        console.log("Iteración:", i);
+      }
+
+      // while loop
+      console.log("Bucle while:");
+      let contador = 0;
+      while (contador < 5) {
+        console.log("Contador:", contador);
+        contador++;
+      }
+
+      // do-while loop
+      console.log("Bucle do-while:");
+      contador = 0;
+      do {
+        console.log("Contador:", contador);
+        contador++;
+      } while (contador < 5);
+    </script>
+  </body>
+</html>
