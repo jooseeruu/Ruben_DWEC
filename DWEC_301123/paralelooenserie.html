@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejecución en Serie y Paralelo</title>
+  </head>
+  <body>
+    <script>
+      function operacionAsincrona(id) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(`Operación ${id} completada`);
+          }, Math.random() * 2000); // Tiempo aleatorio entre 0 y 2000 ms
+        });
+      }
+
+      async function ejecucionEnSerie() {
+        const resultado1 = await operacionAsincrona(1);
+        const resultado2 = await operacionAsincrona(2);
+
+        console.log("Ejecución en serie:");
+        console.log(resultado1);
+        console.log(resultado2);
+      }
+
+      async function ejecucionParalela() {
+        const promesa1 = operacionAsincrona(1);
+        const promesa2 = operacionAsincrona(2);
+
+        // Ejecutar las dos operaciones en paralelo
+        const resultado1 = await promesa1;
+        const resultado2 = await promesa2;
+
+        console.log("Ejecución en paralelo:");
+        console.log(resultado1);
+        console.log(resultado2);
+      }
+
+      // Llamadas a las funciones
+      ejecucionEnSerie();
+      ejecucionParalela();
+    </script>
+  </body>
+</html>

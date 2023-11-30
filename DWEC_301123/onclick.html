@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo onclick</title>
+  </head>
+  <body>
+    <p id="mensaje">Haz clic en el botón para cambiar el mensaje.</p>
+
+    <button id="botonCambio" onclick="cambiarMensaje()">Cambiar Mensaje</button>
+
+    <script>
+      function cambiarMensaje() {
+        const mensajeElemento = document.getElementById("mensaje");
+        mensajeElemento.textContent = "¡Mensaje cambiado!";
+      }
+    </script>
+  </body>
+</html>

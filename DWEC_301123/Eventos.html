@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evento en HTML y JavaScript</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="cambiarColor">Cambiar Color</button>
+
+    <script>
+      // Obtener el botón por su ID
+      var boton = document.getElementById("cambiarColor");
+
+      // Agregar un "escuchador" de eventos al botón
+      boton.addEventListener("click", function () {
+        // Generar un color aleatorio en formato hexadecimal
+        var colorAleatorio =
+          "#" + Math.floor(Math.random() * 16777215).toString(16);
+
+        // Cambiar el color de fondo de la página al color aleatorio generado
+        document.body.style.backgroundColor = colorAleatorio;
+      });
+    </script>
+  </body>
+</html>

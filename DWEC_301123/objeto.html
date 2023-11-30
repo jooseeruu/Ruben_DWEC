@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objeto</title>
+  </head>
+  <body>
+    <script>
+      // Creación de un objeto 'Usuario'
+      var usuario = {
+        nombre: "Juan",
+        edad: 25,
+        email: "juan@example.com",
+        saludar: function () {
+          alert(
+            "¡Hola! Soy " + this.nombre + " y tengo " + this.edad + " años."
+          );
+        },
+      };
+
+      // Acceso a las propiedades y llamada a un método del objeto 'usuario'
+      console.log(usuario.nombre); // Acceder a la propiedad 'nombre'
+      console.log(usuario.edad); // Acceder a la propiedad 'edad'
+      usuario.saludar(); // Llamar al método 'saludar' del objeto 'usuario'
+    </script>
+  </body>
+</html>

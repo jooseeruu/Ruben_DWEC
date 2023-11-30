@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clousure</title>
+  </head>
+  <body>
+    <script>
+      function fabricarContador() {
+        let contador = 0; // El contador interno de la fábrica
+
+        function contar() {
+          contador++; // Cada vez que se llama, el contador aumenta
+          console.log(contador);
+        }
+
+        return contar; // Devolvemos la función interna
+      }
+
+      const miContador = fabricarContador(); // Creamos un contador usando la fábrica
+
+      miContador(); // Output: 1
+      miContador(); // Output: 2
+      miContador(); // Output: 3
+    </script>
+  </body>
+</html>

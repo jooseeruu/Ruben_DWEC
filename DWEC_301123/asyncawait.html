@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>asyncawait</title>
+  </head>
+  <body>
+    <script>
+      // Función simulada que devuelve una promesa después de un cierto tiempo
+      function operacionAsincrona() {
+        return new Promise((resolve) => {
+          // Simulación de una operación que demora
+          setTimeout(() => {
+            resolve("¡Operación exitosa!");
+          }, 2000); // Simula una operación que toma 2 segundos
+        });
+      }
+
+      // Función async que utiliza await para manejar la operación asíncrona
+      async function ejecutarOperacion() {
+        try {
+          console.log("Comenzando la operación...");
+          const resultado = await operacionAsincrona(); // Espera a que la promesa se resuelva
+          console.log(resultado); // Se ejecuta cuando la promesa se resuelve
+          console.log("Operación completada.");
+        } catch (error) {
+          console.error("¡Algo salió mal!", error); // Se ejecuta si hay un error
+        }
+      }
+
+      // Llamando a la función async
+      ejecutarOperacion();
+    </script>
+  </body>
+</html>

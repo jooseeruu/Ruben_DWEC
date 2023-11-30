@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>varletconst</title>
+  </head>
+  <body>
+    <script>
+      // Ejemplo con var
+      var numeroVar = 10;
+      if (true) {
+        var numeroVar = 20;
+        console.log("var en el bloque:", numeroVar); // Output: 20
+      }
+      console.log("var fuera del bloque:", numeroVar); // Output: 20
+
+      // Ejemplo con let
+      let numeroLet = 10;
+      if (true) {
+        let numeroLet = 20;
+        console.log("let en el bloque:", numeroLet); // Output: 20
+      }
+      console.log("let fuera del bloque:", numeroLet); // Output: 10
+
+      // Ejemplo con const
+      const PI = 3.1416;
+      // PI = 3.14; // Esto generará un error, no se puede reasignar PI
+      const persona = { nombre: "Ana", edad: 30 };
+      persona.edad = 31; // Esto es válido, pero no se puede reasignar persona a otro objeto
+
+      console.log("Valor de PI:", PI);
+      console.log("Persona después de modificar edad:", persona);
+    </script>
+  </body>
+</html>

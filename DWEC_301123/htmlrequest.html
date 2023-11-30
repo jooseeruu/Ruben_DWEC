@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html request</title>
+  </head>
+  <body>
+    <script>
+      // Realizar una solicitud GET a una URL y manejar la respuesta usando Fetch API
+      fetch("https://api.example.com/data")
+        .then((response) => {
+          // Verificar si la solicitud fue exitosa
+          if (!response.ok) {
+            throw new Error("La solicitud no fue exitosa");
+          }
+          // Convertir la respuesta a formato JSON
+          return response.json();
+        })
+        .then((data) => {
+          // Hacer algo con los datos recibidos
+          console.log(data);
+        })
+        .catch((error) => {
+          // Manejar cualquier error ocurrido durante la solicitud
+          console.error("Error:", error);
+        });
+    </script>
+  </body>
+</html>

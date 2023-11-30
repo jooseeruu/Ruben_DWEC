@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>promesa</title>
+  </head>
+  <body>
+    <script>
+      // Simulación de una función asíncrona que devuelve una promesa
+      function operacionAsincrona() {
+        return new Promise((resolve, reject) => {
+          // Simulación de una operación que demora
+          setTimeout(() => {
+            const exito = true;
+
+            if (exito) {
+              resolve("¡Operación exitosa!"); // Resuelve la promesa si hay éxito
+            } else {
+              reject("¡Algo salió mal!"); // Rechaza la promesa si hay un error
+            }
+          }, 2000); // Simula una operación que toma 2 segundos
+        });
+      }
+
+      // Utilizando la promesa
+      operacionAsincrona()
+        .then((resultado) => {
+          console.log(resultado); // Se ejecuta si la promesa se resuelve correctamente
+        })
+        .catch((error) => {
+          console.error(error); // Se ejecuta si la promesa es rechazada
+        });
+    </script>
+  </body>
+</html>

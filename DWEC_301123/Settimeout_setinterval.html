@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejemplo de setTimeout y setInterval</title>
+</head>
+<body>
+
+<h1>Cuenta Regresiva</h1>
+<p id="contador">5</p>
+<p id="reloj">Tiempo: 0s</p>
+
+<script>
+  var tiempo = 5; // Tiempo inicial en segundos para la cuenta regresiva
+
+  // Función para la cuenta regresiva
+  function cuentaRegresiva() {
+    var contadorElemento = document.getElementById('contador');
+    var relojElemento = document.getElementById('reloj');
+
+    // Mostrar la cuenta regresiva
+    var cuentaAtras = setInterval(function() {
+      tiempo--;
+      contadorElemento.innerHTML = tiempo;
+
+      if (tiempo <= 0) {
+        clearInterval(cuentaAtras); // Detener la cuenta regresiva cuando llegue a cero
+        contadorElemento.innerHTML = "¡Tiempo terminado!";
+      }
+    }, 1000); // Actualizar cada segundo
+
+    // Mostrar el reloj actualizado
+    setInterval(function() {
+      relojElemento.innerHTML = "Tiempo: " + (5 - tiempo) + "s";
+    }, 1000); // Actualizar cada segundo
+  }
+
+  // Ejecutar la cuenta regresiva después de 2 segundos
+  setTimeout(cuentaRegresiva, 2000);
+</script>
+
+</body>
+</html>

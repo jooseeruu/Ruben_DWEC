@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Undefined o Null</title>
+  </head>
+  <body>
+    <script>
+      // Declaración de variables
+      var variableNula = null;
+      var variableIndefinida;
+
+      // Mostrar los valores y tipos de las variables
+      console.log("Valor de variableNula:", variableNula); // null
+      console.log("Tipo de variableNula:", typeof variableNula); // object
+
+      console.log("Valor de variableIndefinida:", variableIndefinida); // undefined
+      console.log("Tipo de variableIndefinida:", typeof variableIndefinida); // undefined
+
+      // Verificar si las variables son iguales usando '==' y '==='
+      console.log(
+        "¿variableNula es igual a undefined?",
+        variableNula == undefined
+      ); // false
+      console.log(
+        "¿variableIndefinida es igual a undefined?",
+        variableIndefinida == undefined
+      ); // true
+      console.log("¿variableNula es igual a null?", variableNula === null); // true
+      console.log(
+        "¿variableIndefinida es igual a null?",
+        variableIndefinida === null
+      ); // false
+    </script>
+  </body>
+</html>
