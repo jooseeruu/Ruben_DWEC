@@ -2,40 +2,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Página de IndexedDB</title>
+    <input type="text" id="dni" placeholder="DNI">
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="text" id="apellidos" placeholder="Apellidos">
     <button id="btnAdd">Añadir objeto</button>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('btnAdd').addEventListener('click', function() {
-              // Abrir nuestra base de datos
-              const request = window.indexedDB.open("MiBaseDeDatosTest", 1);
-      
-              request.onupgradeneeded = function(event) {
-                // Crear un almacén de objetos en la base de datos
-                const db = event.target.result;
-                const objectStore = db.createObjectStore("misObjetos", { keyPath: "dni" });
-      
-                // Crear un índice para buscar por nombre
-                objectStore.createIndex("nombre", "nombre", { unique: false });
-              };
-      
-              request.onsuccess = function(event) {
-                const db = event.target.result;
-      
-                // Iniciar una transacción y hacer una solicitud para realizar alguna operación en la base de datos
+        function abrirBaseDeDatos() {
+            return new Promise((resolve, reject) => {
+                const request = window.indexedDB.open("MiBaseDeDatosTest", 1);
+                request.onupgradeneeded = function(event) {
+                    const db = event.target.result;
+                    const objectStore = db.createObjectStore("misObjetos", { keyPath: "dni" });
+                    objectStore.createIndex("nombre", "nombre", { unique: false });
+                };
+                request.onsuccess = function(event) {
+                    resolve(event.target.result);
+                };
+                request.onerror = function(event) {
+                    reject("Error al abrir la base de datos");
+                };
+            });
+        }
+
+        function anadirObjeto(db, dni, nombre, apellidos) {
+            return new Promise((resolve, reject) => {
                 const transaction = db.transaction(["misObjetos"], "readwrite");
                 const objectStore = transaction.objectStore("misObjetos");
-                const objectStoreRequest = objectStore.add({ dni: "12345678A", nombre: "MiNombre", apellidos: "MisApellidos" });
-      
+                const objectStoreRequest = objectStore.add({ dni: dni, nombre: nombre, apellidos: apellidos });
                 objectStoreRequest.onsuccess = function(event) {
-                  // Hacer algo con los resultados
-                  console.log("El objeto se ha añadido correctamente a la base de datos");
+                    resolve("El objeto se ha añadido correctamente a la base de datos");
                 };
-              };
-      
-              request.onerror = function(event) {
-                console.log("Error al abrir la base de datos", event);
-              };
+                objectStoreRequest.onerror = function(event) {
+                    reject("Error al añadir el objeto");
+                };
             });
-          });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('btnAdd').addEventListener('click', function() {
+                const dni = document.getElementById('dni').value;
+                const nombre = document.getElementById('nombre').value;
+                const apellidos = document.getElementById('apellidos').value;
+                abrirBaseDeDatos().then(db => {
+                    anadirObjeto(db, dni, nombre, apellidos).then(msg => {
+                        console.log(msg);
+                    }).catch(err => {
+                        console.log(err);
+                    });
+                }).catch(err => {
+                    console.log(err);
+                });
+            });
+        });
     </script>
 </head>
