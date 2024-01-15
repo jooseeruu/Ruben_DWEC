@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uso de LocalStorage y SessionStorage</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #mensaje {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Uso de LocalStorage y SessionStorage</h1>
+    <button type="button" onclick="guardarDatos()">Guardar datos</button>
+    <button type="button" onclick="mostrarDatos()">Mostrar datos</button>
+    <p id="mensaje"></p>
+
+    <script>
+      function guardarDatos() {
+        localStorage.setItem("nombre", "Juan");
+        sessionStorage.setItem("apellido", "Pérez");
+      }
+
+      function mostrarDatos() {
+        var nombre = localStorage.getItem("nombre");
+        var apellido = sessionStorage.getItem("apellido");
+
+        document.getElementById("mensaje").innerHTML =
+          "Nombre: " + nombre + ", Apellido: " + apellido;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapa con Leaflet y Geolocalización</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      #mapid {
+        height: 1080px;
+        width: 1080px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapid"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      var map, marker;
+      var ubicaciones = JSON.parse(localStorage.getItem("ubicaciones")) || [];
+
+      function initMap(lat, lon) {
+        map = L.map("mapid").setView([lat, lon], 13);
+
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        ubicaciones.forEach(function (ubicacion) {
+          L.marker([ubicacion.lat, ubicacion.lon])
+            .addTo(map)
+            .bindPopup("Estuviste aquí.")
+            .openPopup();
+        });
+
+        marker = L.marker([lat, lon])
+          .addTo(map)
+          .bindPopup("Estás aquí.")
+          .openPopup();
+      }
+
+      function obtenerUbicacion() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            ubicaciones.push({
+              lat: position.coords.latitude,
+              lon: position.coords.longitude,
+            });
+
+            ubicaciones = ubicaciones.slice(-5);
+
+            localStorage.setItem("ubicaciones", JSON.stringify(ubicaciones));
+
+            initMap(position.coords.latitude, position.coords.longitude);
+          });
+        } else {
+          alert("La Geolocalización no es soportada por este navegador.");
+        }
+      }
+
+      obtenerUbicacion();
+    </script>
+  </body>
+</html>
